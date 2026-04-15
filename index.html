@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda Pro FIX</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
+  background: linear-gradient(90deg, #000, #333);
+}
+
+/* HERO */
+.hero {
+  height: 60vh;
+  background: url('https://picsum.photos/1200/600') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 1;
+}
+
+/* CARD PRODUCTO */
+.producto {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* CONTENEDOR IMAGEN */
+.img-box {
+  position: relative;
+  overflow: hidden;
+}
+
+/* IMAGEN */
+.img-box img {
+  width: 100%;
+  transition: 0.5s;
+}
+
+.producto:hover .img-box img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY REAL */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+/* TEXTO OVERLAY */
+.overlay span {
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  font-weight: bold;
+  transform: translateY(20px);
+  transition: 0.3s;
+}
+
+/* HOVER CORRECTO */
+.img-box:hover .overlay {
+  opacity: 1;
+}
+
+.img-box:hover .overlay span {
+  transform: translateY(0);
+}
+
+/* CONTENIDO */
+.contenido {
+  padding: 15px;
+  text-align: center;
+}
+
+.precio {
+  color: crimson;
+  font-weight: bold;
+}
+
+/* BOTÓN */
+.btn-custom {
+  background: black;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background: crimson;
+}
+
+/* MEDIA */
+@media (max-width: 768px) {
+  .hero {
+    height: 40vh;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark">
+  <div class="container">
+    <span class="navbar-brand">MiTienda</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Bienvenido a la Tienda</h1>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- PRODUCTO -->
+    <div class="col-md-4">
+      <div class="producto">
+
+        <div class="img-box">
+          <img src="https://picsum.photos/300/300?1">
+
+          <div class="overlay">
+            <span>Ver producto</span>
+          </div>
+        </div>
+
+        <div class="contenido">
+          <h5>Producto 1</h5>
+          <p class="precio">$25</p>
+          <button class="btn btn-custom w-100">Comprar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRODUCTO -->
+    <div class="col-md-4">
+      <div class="producto">
+
+        <div class="img-box">
+          <img src="https://picsum.photos/300/300?2">
+
+          <div class="overlay">
+            <span>Ver producto</span>
+          </div>
+        </div>
+
+        <div class="contenido">
+          <h5>Producto 2</h5>
+          <p class="precio">$40</p>
+          <button class="btn btn-custom w-100">Comprar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRODUCTO -->
+    <div class="col-md-4">
+      <div class="producto">
+
+        <div class="img-box">
+          <img src="https://picsum.photos/300/300?3">
+
+          <div class="overlay">
+            <span>Ver producto</span>
+          </div>
+        </div>
+
+        <div class="contenido">
+          <h5>Producto 3</h5>
+          <p class="precio">$60</p>
+          <button class="btn btn-custom w-100">Comprar</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="text-center p-3 bg-dark text-white">
+  © 2026 MiTienda
+</footer>
+
+</body>
+</html>
