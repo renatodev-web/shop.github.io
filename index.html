@@ -3,133 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda Pro FIX</title>
+<title>NovaShop</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
 }
 
 /* NAVBAR */
 .navbar {
-  background: linear-gradient(90deg, #000, #333);
+  background: #111;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #fff !important;
+}
+
+.search-box input {
+  border-radius: 20px;
 }
 
 /* HERO */
 .hero {
-  height: 60vh;
-  background: url('https://picsum.photos/1200/600') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: relative;
+  background: url('https://picsum.photos/1200/500?blur=2') center/cover;
+  height: 50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  position:relative;
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.6);
 }
 
 .hero h1 {
-  position: relative;
-  z-index: 1;
+  position:relative;
+  z-index:1;
+  font-size: 40px;
+  animation: fade 1.5s ease;
 }
 
-/* CARD PRODUCTO */
+@keyframes fade {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* CATEGORIAS */
+.categoria {
+  background:white;
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.categoria:hover {
+  transform:translateY(-5px);
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* PRODUCTOS */
 .producto {
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s;
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  transition:0.3s;
+  position:relative;
 }
 
 .producto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* CONTENEDOR IMAGEN */
-.img-box {
-  position: relative;
-  overflow: hidden;
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 /* IMAGEN */
+.img-box {
+  position:relative;
+  overflow:hidden;
+}
+
 .img-box img {
-  width: 100%;
-  transition: 0.5s;
+  width:100%;
+  transition:0.5s;
 }
 
-.producto:hover .img-box img {
-  transform: scale(1.1);
+.producto:hover img {
+  transform:scale(1.1);
 }
 
-/* OVERLAY REAL */
+/* BADGE */
+.badge-custom {
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:crimson;
+  color:white;
+  padding:5px 10px;
+  font-size:12px;
+}
+
+/* OVERLAY */
 .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: 0.4s;
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  opacity:0;
+  transition:0.3s;
 }
 
-/* TEXTO OVERLAY */
-.overlay span {
-  background: white;
-  color: black;
-  padding: 10px 20px;
-  font-weight: bold;
-  transform: translateY(20px);
-  transition: 0.3s;
-}
-
-/* HOVER CORRECTO */
 .img-box:hover .overlay {
-  opacity: 1;
+  opacity:1;
 }
 
-.img-box:hover .overlay span {
-  transform: translateY(0);
+/* BOTONES HOVER */
+.overlay button {
+  background:white;
+  border:none;
+  padding:10px 15px;
+  font-size:14px;
+  transition:0.3s;
 }
 
-/* CONTENIDO */
-.contenido {
-  padding: 15px;
-  text-align: center;
+.overlay button:hover {
+  background:black;
+  color:white;
+  transform:scale(1.05);
+}
+
+/* INFO */
+.info {
+  padding:15px;
 }
 
 .precio {
-  color: crimson;
-  font-weight: bold;
+  color:crimson;
+  font-weight:bold;
 }
 
-/* BOTÓN */
-.btn-custom {
-  background: black;
-  color: white;
-  transition: 0.3s;
+/* FOOTER */
+footer {
+  background:#111;
+  color:white;
+  padding:40px 0;
 }
 
-.btn-custom:hover {
-  background: crimson;
+footer a {
+  color:#bbb;
+  text-decoration:none;
+}
+
+footer a:hover {
+  color:white;
 }
 
 /* MEDIA */
-@media (max-width: 768px) {
-  .hero {
-    height: 40vh;
-  }
+@media(max-width:768px){
+  .hero h1 { font-size:25px; }
 }
 
 </style>
@@ -137,87 +184,143 @@
 
 <body>
 
-<nav class="navbar navbar-dark">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <span class="navbar-brand">MiTienda</span>
+    <a class="navbar-brand">NovaShop</a>
+
+    <div class="search-box w-50">
+      <input class="form-control" placeholder="Buscar productos...">
+    </div>
+
+    <div class="text-white">
+      🛒 Carrito
+    </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Bienvenido a la Tienda</h1>
+  <h1>Ofertas exclusivas hoy</h1>
 </section>
 
+<!-- CATEGORIAS -->
 <div class="container my-5">
+  <div class="row g-3">
+    <div class="col-md-3"><div class="categoria">Electrónica</div></div>
+    <div class="col-md-3"><div class="categoria">Ropa</div></div>
+    <div class="col-md-3"><div class="categoria">Hogar</div></div>
+    <div class="col-md-3"><div class="categoria">Deportes</div></div>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<div class="container my-5">
+  <h3 class="mb-4">Productos destacados</h3>
   <div class="row g-4">
 
     <!-- PRODUCTO -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="producto">
-
         <div class="img-box">
-          <img src="https://picsum.photos/300/300?1">
+          <span class="badge-custom">Oferta</span>
+          <img src="https://picsum.photos/300?1">
 
           <div class="overlay">
-            <span>Ver producto</span>
+            <button>Ver</button>
+            <button>Añadir</button>
           </div>
         </div>
 
-        <div class="contenido">
-          <h5>Producto 1</h5>
-          <p class="precio">$25</p>
-          <button class="btn btn-custom w-100">Comprar</button>
+        <div class="info">
+          <h6>Audífonos Bluetooth</h6>
+          <p class="precio">$35</p>
         </div>
-
       </div>
     </div>
 
     <!-- PRODUCTO -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="producto">
-
         <div class="img-box">
-          <img src="https://picsum.photos/300/300?2">
+          <span class="badge-custom">Nuevo</span>
+          <img src="https://picsum.photos/300?2">
 
           <div class="overlay">
-            <span>Ver producto</span>
+            <button>Ver</button>
+            <button>Añadir</button>
           </div>
         </div>
 
-        <div class="contenido">
-          <h5>Producto 2</h5>
-          <p class="precio">$40</p>
-          <button class="btn btn-custom w-100">Comprar</button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- PRODUCTO -->
-    <div class="col-md-4">
-      <div class="producto">
-
-        <div class="img-box">
-          <img src="https://picsum.photos/300/300?3">
-
-          <div class="overlay">
-            <span>Ver producto</span>
-          </div>
-        </div>
-
-        <div class="contenido">
-          <h5>Producto 3</h5>
+        <div class="info">
+          <h6>Zapatillas deportivas</h6>
           <p class="precio">$60</p>
-          <button class="btn btn-custom w-100">Comprar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUPLICA MÁS PRODUCTOS -->
+    <div class="col-md-3">
+      <div class="producto">
+        <div class="img-box">
+          <img src="https://picsum.photos/300?3">
+
+          <div class="overlay">
+            <button>Ver</button>
+            <button>Añadir</button>
+          </div>
         </div>
 
+        <div class="info">
+          <h6>Smartwatch</h6>
+          <p class="precio">$90</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="producto">
+        <div class="img-box">
+          <img src="https://picsum.photos/300?4">
+
+          <div class="overlay">
+            <button>Ver</button>
+            <button>Añadir</button>
+          </div>
+        </div>
+
+        <div class="info">
+          <h6>Mochila urbana</h6>
+          <p class="precio">$45</p>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<footer class="text-center p-3 bg-dark text-white">
-  © 2026 MiTienda
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>NovaShop</h5>
+        <p>Tienda online moderna</p>
+      </div>
+
+      <div class="col-md-4">
+        <h6>Enlaces</h6>
+        <a href="#">Inicio</a><br>
+        <a href="#">Productos</a><br>
+        <a href="#">Contacto</a>
+      </div>
+
+      <div class="col-md-4">
+        <h6>Contacto</h6>
+        <p>Email: contacto@novashop.com</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
 </body>
