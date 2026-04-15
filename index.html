@@ -18,17 +18,10 @@ body {
 }
 
 /* NAVBAR */
-.navbar {
-  background: #111;
-}
-
-.navbar-brand {
-  font-weight: bold;
-  color: #fff !important;
-}
+.navbar { background:#111; }
 
 .search-box input {
-  border-radius: 20px;
+  border-radius:20px;
 }
 
 /* HERO */
@@ -52,37 +45,15 @@ body {
 .hero h1 {
   position:relative;
   z-index:1;
-  font-size: 40px;
-  animation: fade 1.5s ease;
+  font-size:40px;
 }
 
-@keyframes fade {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
-/* CATEGORIAS */
-.categoria {
-  background:white;
-  padding:20px;
-  text-align:center;
-  border-radius:10px;
-  transition:0.3s;
-  cursor:pointer;
-}
-
-.categoria:hover {
-  transform:translateY(-5px);
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* PRODUCTOS */
+/* PRODUCTO */
 .producto {
   background:white;
   border-radius:10px;
   overflow:hidden;
   transition:0.3s;
-  position:relative;
 }
 
 .producto:hover {
@@ -90,14 +61,18 @@ body {
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* IMAGEN */
+/* IMAGEN UNIFICADA */
 .img-box {
   position:relative;
+  width:100%;
+  height:250px; /* 👈 clave */
   overflow:hidden;
 }
 
 .img-box img {
   width:100%;
+  height:100%;
+  object-fit:cover; /* 👈 uniformiza todo */
   transition:0.5s;
 }
 
@@ -133,50 +108,63 @@ body {
   opacity:1;
 }
 
-/* BOTONES HOVER */
 .overlay button {
   background:white;
   border:none;
-  padding:10px 15px;
-  font-size:14px;
-  transition:0.3s;
+  padding:8px 12px;
+  font-size:13px;
 }
 
 .overlay button:hover {
   background:black;
   color:white;
-  transform:scale(1.05);
 }
 
 /* INFO */
 .info {
   padding:15px;
+  text-align:center;
 }
 
 .precio {
   color:crimson;
   font-weight:bold;
+  font-size:18px;
 }
 
 /* FOOTER */
 footer {
   background:#111;
   color:white;
-  padding:40px 0;
+  padding:30px 0;
 }
 
-footer a {
-  color:#bbb;
-  text-decoration:none;
+/* RESPONSIVE PRO */
+@media (max-width: 992px) {
+  .hero { height:40vh; }
 }
 
-footer a:hover {
-  color:white;
+@media (max-width: 768px) {
+  .hero h1 { font-size:24px; }
+
+  .search-box {
+    display:none; /* ocultar buscador en móvil */
+  }
+
+  .img-box {
+    height:180px; /* imágenes más pequeñas en móvil */
+  }
 }
 
-/* MEDIA */
-@media(max-width:768px){
-  .hero h1 { font-size:25px; }
+@media (max-width: 480px) {
+  .img-box {
+    height:150px;
+  }
+
+  .overlay button {
+    font-size:11px;
+    padding:6px 8px;
+  }
 }
 
 </style>
@@ -187,15 +175,13 @@ footer a:hover {
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand">NovaShop</a>
+    <span class="navbar-brand">NovaShop</span>
 
     <div class="search-box w-50">
       <input class="form-control" placeholder="Buscar productos...">
     </div>
 
-    <div class="text-white">
-      🛒 Carrito
-    </div>
+    <div class="text-white">🛒</div>
   </div>
 </nav>
 
@@ -204,94 +190,78 @@ footer a:hover {
   <h1>Ofertas exclusivas hoy</h1>
 </section>
 
-<!-- CATEGORIAS -->
-<div class="container my-5">
-  <div class="row g-3">
-    <div class="col-md-3"><div class="categoria">Electrónica</div></div>
-    <div class="col-md-3"><div class="categoria">Ropa</div></div>
-    <div class="col-md-3"><div class="categoria">Hogar</div></div>
-    <div class="col-md-3"><div class="categoria">Deportes</div></div>
-  </div>
-</div>
-
 <!-- PRODUCTOS -->
 <div class="container my-5">
   <h3 class="mb-4">Productos destacados</h3>
+
   <div class="row g-4">
 
     <!-- PRODUCTO -->
-    <div class="col-md-3">
+    <div class="col-lg-3 col-md-6 col-6">
       <div class="producto">
         <div class="img-box">
           <span class="badge-custom">Oferta</span>
-          <img src="https://picsum.photos/300?1">
-
+          <img src="https://claroperupoc.vtexassets.com/arquivos/ids/2396944/image-118a9ed097374031aaf48f24247223ec.jpg">
           <div class="overlay">
             <button>Ver</button>
             <button>Añadir</button>
           </div>
         </div>
-
         <div class="info">
           <h6>Audífonos Bluetooth</h6>
-          <p class="precio">$35</p>
+          <p class="precio">S/ 129</p>
         </div>
       </div>
     </div>
 
     <!-- PRODUCTO -->
-    <div class="col-md-3">
+    <div class="col-lg-3 col-md-6 col-6">
       <div class="producto">
         <div class="img-box">
           <span class="badge-custom">Nuevo</span>
-          <img src="https://picsum.photos/300?2">
-
+          <img src="https://media.istockphoto.com/id/2222320816/es/foto/zapatillas-deportivas-para-correr-aisladas-sobre-fondo-blanco.jpg?s=612x612&w=0&k=20&c=DsLltrKUnfXMO2SaxwDNIGls_zVGHOMPm8G3kZ11ngw=">
           <div class="overlay">
             <button>Ver</button>
             <button>Añadir</button>
           </div>
         </div>
-
         <div class="info">
           <h6>Zapatillas deportivas</h6>
-          <p class="precio">$60</p>
+          <p class="precio">S/ 219</p>
         </div>
       </div>
     </div>
 
-    <!-- DUPLICA MÁS PRODUCTOS -->
-    <div class="col-md-3">
+    <!-- PRODUCTO -->
+    <div class="col-lg-3 col-md-6 col-6">
       <div class="producto">
         <div class="img-box">
-          <img src="https://picsum.photos/300?3">
-
+          <img src="https://img.freepik.com/fotos-premium/exhibicion-digital-pulsera-reloj-inteligente-negra-fondo-blanco_665346-55392.jpg">
           <div class="overlay">
             <button>Ver</button>
             <button>Añadir</button>
           </div>
         </div>
-
         <div class="info">
           <h6>Smartwatch</h6>
-          <p class="precio">$90</p>
+          <p class="precio">S/ 349</p>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3">
+    <!-- PRODUCTO -->
+    <div class="col-lg-3 col-md-6 col-6">
       <div class="producto">
         <div class="img-box">
-          <img src="https://picsum.photos/300?4">
-
+          <img src="https://www.thenorthface.com.pe/media/catalog/product/n/f/nf0a8bk4_nfbia_1_1.jpg">
           <div class="overlay">
             <button>Ver</button>
             <button>Añadir</button>
           </div>
         </div>
-
         <div class="info">
           <h6>Mochila urbana</h6>
-          <p class="precio">$45</p>
+          <p class="precio">S/ 179</p>
         </div>
       </div>
     </div>
@@ -301,25 +271,8 @@ footer a:hover {
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h5>NovaShop</h5>
-        <p>Tienda online moderna</p>
-      </div>
-
-      <div class="col-md-4">
-        <h6>Enlaces</h6>
-        <a href="#">Inicio</a><br>
-        <a href="#">Productos</a><br>
-        <a href="#">Contacto</a>
-      </div>
-
-      <div class="col-md-4">
-        <h6>Contacto</h6>
-        <p>Email: contacto@novashop.com</p>
-      </div>
-    </div>
+  <div class="container text-center">
+    © 2026 NovaShop
   </div>
 </footer>
 
